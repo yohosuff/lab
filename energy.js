@@ -1,10 +1,11 @@
 import { CoolColors } from "./colors.js";
+import { Vector2 } from "./vector2.js";
 
 export class Energy {
     constructor() {
-        this.position = { x: 0, y: 0 };
+        this.position = new Vector2();
         this.radius = 10;
-        this.speed = { x: 0, y: 0 };
+        this.speed = new Vector2();
         this.color = CoolColors.YELLOW;
         this.energy = 10;
     }

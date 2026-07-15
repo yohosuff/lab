@@ -1,10 +1,11 @@
 import { CoolColors } from "./colors.js";
+import { Vector2 } from "./vector2.js";
 
 export class Bot {
     constructor() {
-        this.position = { x: 0, y: 0 };
+        this.position = new Vector2();
         this.radius = 50;
-        this.speed = { x: 0, y: 0 };
+        this.speed = new Vector2();
         this.color = CoolColors.ELECTRIC_BLUE;
         this.energy = 100;
     }
