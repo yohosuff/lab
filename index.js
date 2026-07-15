@@ -13,10 +13,10 @@ let lastTime = 0;
 let accumulatedTime = 0;
 
 const bot = new Bot();
-bot.teleport(canvas.width / 4, canvas.height / 2);
+bot.teleport(canvas.width / 2, canvas.height / 2);
 
 const energy = new Energy();
-energy.teleport(canvas.width / 4 * 3, canvas.height / 2);
+energy.teleport(canvas.width / 2 + bot.radius + 50, canvas.height / 2);
 
 const bar = new Bar(0, 0);
 
@@ -51,7 +51,7 @@ function update() {
 
     if (areColliding(bot, energy)) {
         bot.energy += energy.energy;
-        energy.teleportToRandomPosition();
+        energy.teleportToRandomPosition(canvas.width, canvas.height);
     }
 
     bar.value = bot.energy / bot.maxEnergy;
