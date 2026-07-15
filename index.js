@@ -41,7 +41,9 @@ window.addEventListener('keyup', event => {
 
 function update() {
     if (keysPressed.KeyD) {
-        bot.velocity.x = 250;
+        bot.velocity.x = bot.speed;
+    } else if(keysPressed.KeyA) {
+        bot.velocity.x = -bot.speed;
     } else {
         bot.velocity.x = 0;
     }
