@@ -12,7 +12,7 @@ let accumulatedTime = 0;
 
 const bot = new Bot();
 
-bot.teleportToRandomPosition(canvas.width, canvas.height);
+bot.teleport(canvas.width / 2, canvas.height / 2);
 
 function update() {
     bot.update(TIME_PER_FRAME_S);

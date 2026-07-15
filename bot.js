@@ -24,4 +24,9 @@ export class Bot {
         this.position.x = Math.random() * width;
         this.position.y = Math.random() * height;
     }
+
+    teleport(x, y) {
+        this.position.x = x;
+        this.position.y = y;
+    }
 }
