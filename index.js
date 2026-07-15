@@ -68,9 +68,9 @@ function areColliding(circle_one, circle_two) {
 
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    bar.render(ctx);
     bot.render(ctx);
     energy.render(ctx);
-    bar.render(ctx);
 }
 
 function gameLoop(currentTime) {
