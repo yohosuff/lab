@@ -1,4 +1,5 @@
 import { Bot } from './bot.js';
+import { Energy } from './energy.js';
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
@@ -11,16 +12,20 @@ let lastTime = 0;
 let accumulatedTime = 0;
 
 const bot = new Bot();
+bot.teleport(canvas.width / 4, canvas.height / 2);
 
-bot.teleport(canvas.width / 2, canvas.height / 2);
+const energy = new Energy();
+energy.teleport(canvas.width / 4 * 3, canvas.height / 2);
 
 function update() {
     bot.update(TIME_PER_FRAME_S);
+    energy.update(TIME_PER_FRAME_S);
 }
 
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     bot.render(ctx);
+    energy.render(ctx);
 }
 
 function gameLoop(currentTime) {
