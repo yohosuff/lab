@@ -4,6 +4,7 @@ export class Bot {
     constructor(x, y) {
         this.position = { x, y };
         this.radius = 20;
+        this.speed = { x: 0, y: 0 };
     }
 
     render(ctx) {
@@ -14,6 +15,7 @@ export class Bot {
     }
 
     update(deltaTime) {
-        this.position.x += 50 * deltaTime;
+        this.position.x += this.speed.x * deltaTime;
+        this.position.y += this.speed.y * deltaTime;
     }
 }
