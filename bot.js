@@ -1,9 +1,9 @@
 import { CoolColors } from "./colors.js";
 
 export class Bot {
-    constructor(x, y) {
-        this.position = { x, y };
-        this.radius = 40;
+    constructor() {
+        this.position = { x: 0, y: 0 };
+        this.radius = 50;
         this.speed = { x: 0, y: 0 };
         this.color = CoolColors.ELECTRIC_BLUE;
     }
@@ -18,5 +18,10 @@ export class Bot {
     update(deltaTime) {
         this.position.x += this.speed.x * deltaTime;
         this.position.y += this.speed.y * deltaTime;
+    }
+
+    teleportToRandomPosition(width, height) {
+        this.position.x = Math.random() * width;
+        this.position.y = Math.random() * height;
     }
 }

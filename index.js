@@ -1,7 +1,5 @@
 import { Bot } from './bot.js';
 
-const bot = new Bot(100, 200);
-
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -11,6 +9,10 @@ const TIME_PER_FRAME_S = 1 / TARGET_FPS;
 
 let lastTime = 0;
 let accumulatedTime = 0;
+
+const bot = new Bot();
+
+bot.teleportToRandomPosition(canvas.width, canvas.height);
 
 function update() {
     bot.update(TIME_PER_FRAME_S);
