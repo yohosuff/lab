@@ -4,13 +4,12 @@ import { Vector2 } from "./vector2.js";
 export class Bar {
     constructor(x, y) {
         this.position = new Vector2(x, y);
-        this.color = CoolColors.LAVENDER;
+        this.color = CoolColors.NEON_PINK;
         this.value = 0; // between 0 and 1
         this.size = new Vector2(100, 20);
     }
 
     render(ctx) {
-        
         ctx.fillStyle = this.color;
         
         ctx.fillRect(
