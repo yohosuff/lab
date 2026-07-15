@@ -9,19 +9,28 @@ export class Vector2 {
     }
 
     normalize() {
+        const clone = this.clone();
         const magnitude = this.magnitude();
         
         if (magnitude > 0) {
-            this.x = this.x / magnitude;
-            this.y = this.y / magnitude;
+            clone.x = clone.x / magnitude;
+            clone.y = clone.y / magnitude;
         }
 
-        return this;
+        return clone;
     }
 
     multiply(scalar) {
-        this.x = this.x * scalar;
-        this.y = this.y * scalar;
-        return this;
+        const clone = this.clone();
+        clone.x = clone.x * scalar;
+        clone.y = clone.y * scalar;
+        return clone;
+    }
+
+    clone() {
+        const the_clone = new Vector2();
+        the_clone.x = this.x;
+        the_clone.y = this.y;
+        return the_clone;
     }
 }

@@ -11,6 +11,8 @@ export class Bot {
         this.color = CoolColors.ELECTRIC_BLUE;
         this.maxEnergy = 100;
         this.energy = this.maxEnergy;
+        this.idle_energy_usage = 2;
+        this.moving_energy_usage = 10;
     }
 
     render(ctx) {
@@ -21,7 +23,8 @@ export class Bot {
     }
 
     update(deltaTime) {
-        this.energy -= 0.05;
+        
+        this.energy -= (this.idle_energy_usage + this.acceleration.normalize().magnitude() * this.moving_energy_usage) * deltaTime;
 
         if (this.energy <= 0) {
             this.energy = 0;
