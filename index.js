@@ -20,6 +20,20 @@ energy.teleport(canvas.width / 4 * 3, canvas.height / 2);
 function update() {
     bot.update(TIME_PER_FRAME_S);
     energy.update(TIME_PER_FRAME_S);
+
+    if (areColliding(bot, energy)) {
+        bot.energy += energy.energy;
+        energy.teleportToRandomPosition();
+    }
+}
+
+function areColliding(circle_one, circle_two) {
+    const dx = circle_one.position.x - circle_two.position.x;
+    const dy = circle_one.position.y - circle_two.position.y;
+    const d2 = (dx * dx) + (dy * dy);
+    const r = circle_one.radius + circle_two.radius;
+    const r2 = r * r;
+    return d2 < r2;
 }
 
 function render() {
