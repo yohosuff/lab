@@ -29,6 +29,8 @@ const keysPressed = {
     KeyD: false,
 };
 
+const mousePosition = new Vector2();
+
 window.addEventListener('keydown', event => {
     if (event.code in keysPressed) {
         keysPressed[event.code] = true;
@@ -39,6 +41,13 @@ window.addEventListener('keyup', event => {
     if (event.code in keysPressed) {
         keysPressed[event.code] = false;
     }
+});
+
+canvas.addEventListener('mousemove', event => {
+    const rect = canvas.getBoundingClientRect();
+    mousePosition.x = event.clientX - rect.left;
+    mousePosition.y = event.clientY - rect.top;
+    console.log(mousePosition);
 });
 
 function update() {
