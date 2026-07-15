@@ -4,29 +4,16 @@ import { CoolColors } from './colors.js';
 import { Energy } from './energy.js';
 import { Vector2 } from './vector2.js';
 
+const audioCtx = new window.AudioContext();
+
+// TODO: understand how to create sound effects with this
 function playSoundEffect() {
-  // 1. Create the audio context
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  
-  // 2. Create the synthesizer nodes
-  const oscillator = audioCtx.createOscillator();
-  const gainNode = audioCtx.createGain();
-  
-  // 3. Configure the sound shape (Waveform & Frequency)
-  oscillator.type = 'sine'; // Options: 'sine', 'square', 'sawtooth', 'triangle'
-  oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // 440Hz is Note A4
-  
-  // 4. Smoothly fade the volume to prevent a harsh "click" sound
-  gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); // Start at 50% volume
-  gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3); // Fade out over 0.3s
-  
-  // 5. Connect the nodes together: Oscillator -> Gain -> Speakers
-  oscillator.connect(gainNode);
-  gainNode.connect(audioCtx.destination);
-  
-  // 6. Start and hard-stop the source
-  oscillator.start();
-  oscillator.stop(audioCtx.currentTime + 0.3); // Stop precisely at 0.3 seconds
+    const oscillator = audioCtx.createOscillator();
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(400, audioCtx.currentTime + 0);
+    oscillator.connect(audioCtx.destination);
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.05);
 }
 
 const canvas = document.querySelector('canvas');
@@ -100,7 +87,6 @@ function update() {
     }
 
     if (mouseDown) {
-        console.log('mousedown');
         direction = bot.position.directionTo(mousePosition);
     }
 
