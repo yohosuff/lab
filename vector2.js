@@ -33,4 +33,11 @@ export class Vector2 {
         the_clone.y = this.y;
         return the_clone;
     }
+
+    directionTo(v) {
+        const d = new Vector2();
+        d.x = v.x - this.x;
+        d.y = v.y - this.y;
+        return d.normalize();
+    }
 }

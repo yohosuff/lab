@@ -31,6 +31,8 @@ const keysPressed = {
 
 const mousePosition = new Vector2();
 
+let mouseDown = false;
+
 window.addEventListener('keydown', event => {
     if (event.code in keysPressed) {
         keysPressed[event.code] = true;
@@ -47,11 +49,18 @@ canvas.addEventListener('mousemove', event => {
     const rect = canvas.getBoundingClientRect();
     mousePosition.x = event.clientX - rect.left;
     mousePosition.y = event.clientY - rect.top;
-    console.log(mousePosition);
+});
+
+window.addEventListener('mousedown', event => {
+    mouseDown = true;
+});
+
+window.addEventListener('mouseup', event => {
+    mouseDown = false;
 });
 
 function update() {
-    const direction = new Vector2();
+    let direction = new Vector2();
 
     if (keysPressed.KeyD) {
         direction.x = 1;
@@ -63,6 +72,11 @@ function update() {
         direction.y = 1;
     } else if (keysPressed.KeyW) {
         direction.y = -1;
+    }
+
+    if (mouseDown) {
+        console.log('mousedown');
+        direction = bot.position.directionTo(mousePosition);
     }
 
     bot.acceleration = direction.normalize().multiply(bot.speed);
