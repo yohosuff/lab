@@ -7,7 +7,7 @@ export class Energy {
         this.radius = 10;
         this.speed = new Vector2();
         this.color = CoolColors.YELLOW;
-        this.energy = 10;
+        this.energy = 25;
     }
 
     render(ctx) {
