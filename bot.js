@@ -6,6 +6,7 @@ export class Bot {
         this.radius = 50;
         this.speed = { x: 0, y: 0 };
         this.color = CoolColors.ELECTRIC_BLUE;
+        this.energy = 100;
     }
 
     render(ctx) {
@@ -16,6 +17,13 @@ export class Bot {
     }
 
     update(deltaTime) {
+        this.energy -= 1;
+
+        if (this.energy <= 0) {
+            this.energy = 0;
+            return;
+        }
+
         this.position.x += this.speed.x * deltaTime;
         this.position.y += this.speed.y * deltaTime;
     }
