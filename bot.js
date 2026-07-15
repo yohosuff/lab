@@ -7,7 +7,8 @@ export class Bot {
         this.radius = 50;
         this.speed = new Vector2();
         this.color = CoolColors.ELECTRIC_BLUE;
-        this.energy = 100;
+        this.maxEnergy = 100;
+        this.energy = this.maxEnergy;
     }
 
     render(ctx) {
@@ -18,7 +19,7 @@ export class Bot {
     }
 
     update(deltaTime) {
-        this.energy -= 1;
+        this.energy -= 0.05;
 
         if (this.energy <= 0) {
             this.energy = 0;

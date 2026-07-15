@@ -1,3 +1,4 @@
+import { Bar } from './bar.js';
 import { Bot } from './bot.js';
 import { Energy } from './energy.js';
 
@@ -17,6 +18,8 @@ bot.teleport(canvas.width / 4, canvas.height / 2);
 const energy = new Energy();
 energy.teleport(canvas.width / 4 * 3, canvas.height / 2);
 
+const bar = new Bar(0, 0);
+
 function update() {
     bot.update(TIME_PER_FRAME_S);
     energy.update(TIME_PER_FRAME_S);
@@ -25,6 +28,8 @@ function update() {
         bot.energy += energy.energy;
         energy.teleportToRandomPosition();
     }
+
+    bar.value = bot.energy / bot.maxEnergy;
 }
 
 function areColliding(circle_one, circle_two) {
@@ -40,6 +45,7 @@ function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     bot.render(ctx);
     energy.render(ctx);
+    bar.render(ctx);
 }
 
 function gameLoop(currentTime) {
