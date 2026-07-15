@@ -62,7 +62,7 @@ function update() {
     energy.update(TIME_PER_FRAME_S);
 
     if (areColliding(bot, energy)) {
-        bot.energy += energy.energy;
+        bot.energy = Math.min(bot.maxEnergy, bot.energy + energy.energy);
         energy.teleportToRandomPosition(canvas.width, canvas.height);
     }
 
