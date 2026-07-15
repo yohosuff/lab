@@ -1,6 +1,6 @@
 import { Bot } from './bot.js';
 
-const bot = new Bot(100, 100);
+const bot = new Bot(100, 200);
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
