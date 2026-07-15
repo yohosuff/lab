@@ -48,6 +48,14 @@ function update() {
         bot.velocity.x = 0;
     }
 
+    if (keysPressed.KeyS) {
+        bot.velocity.y = bot.speed;
+    } else if (keysPressed.KeyW) {
+        bot.velocity.y = -bot.speed;
+    } else {
+        bot.velocity.y = 0;
+    }
+
     bot.update(TIME_PER_FRAME_S);
     energy.update(TIME_PER_FRAME_S);
 
