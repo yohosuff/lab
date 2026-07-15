@@ -28,7 +28,7 @@ export class Bot {
 
         if (this.energy <= 0) {
             this.energy = 0;
-            return;
+            this.acceleration = new Vector2();
         }
 
         this.velocity.x += this.acceleration.x;
