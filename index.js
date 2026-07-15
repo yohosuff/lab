@@ -1,6 +1,7 @@
 import { Bar } from './bar.js';
 import { Bot } from './bot.js';
 import { Energy } from './energy.js';
+import { Vector2 } from './vector2.js';
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
@@ -40,21 +41,21 @@ window.addEventListener('keyup', event => {
 });
 
 function update() {
+    const direction = new Vector2();
+
     if (keysPressed.KeyD) {
-        bot.velocity.x = bot.speed;
+        direction.x = 1;
     } else if(keysPressed.KeyA) {
-        bot.velocity.x = -bot.speed;
-    } else {
-        bot.velocity.x = 0;
+        direction.x = -1;
     }
 
     if (keysPressed.KeyS) {
-        bot.velocity.y = bot.speed;
+        direction.y = 1;
     } else if (keysPressed.KeyW) {
-        bot.velocity.y = -bot.speed;
-    } else {
-        bot.velocity.y = 0;
+        direction.y = -1;
     }
+
+    bot.velocity = direction.normalize().multiply(bot.speed);
 
     bot.update(TIME_PER_FRAME_S);
     energy.update(TIME_PER_FRAME_S);
