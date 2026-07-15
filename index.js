@@ -56,7 +56,7 @@ function update() {
         direction.y = -1;
     }
 
-    bot.velocity = direction.normalize().multiply(bot.speed);
+    bot.acceleration = direction.normalize().multiply(bot.speed);
 
     bot.update(TIME_PER_FRAME_S);
     energy.update(TIME_PER_FRAME_S);

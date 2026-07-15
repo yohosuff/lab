@@ -5,7 +5,8 @@ export class Bot {
     constructor() {
         this.position = new Vector2();
         this.radius = 50;
-        this.speed = 250;
+        this.speed = 50;
+        this.acceleration = new Vector2();
         this.velocity = new Vector2();
         this.color = CoolColors.ELECTRIC_BLUE;
         this.maxEnergy = 100;
@@ -26,6 +27,9 @@ export class Bot {
             this.energy = 0;
             return;
         }
+
+        this.velocity.x += this.acceleration.x;
+        this.velocity.y += this.acceleration.y;
 
         this.position.x += this.velocity.x * deltaTime;
         this.position.y += this.velocity.y * deltaTime;
