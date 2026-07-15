@@ -1,5 +1,6 @@
 import { Bar } from './bar.js';
 import { Bot } from './bot.js';
+import { CoolColors } from './colors.js';
 import { Energy } from './energy.js';
 import { Vector2 } from './vector2.js';
 
@@ -19,7 +20,7 @@ bot.teleport(canvas.width / 2, canvas.height / 2);
 const energy = new Energy();
 energy.teleport(canvas.width / 2 + bot.radius + 50, canvas.height / 2);
 
-const bar = new Bar(0, 0);
+const bar = new Bar(3, 3, 200, 10, CoolColors.LIME, CoolColors.LAVENDER);
 
 const keysPressed = {
     KeyW: false,
