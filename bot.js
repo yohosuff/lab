@@ -5,7 +5,7 @@ export class Bot {
     constructor() {
         this.position = new Vector2();
         this.radius = 50;
-        this.speed = new Vector2();
+        this.velocity = new Vector2();
         this.color = CoolColors.ELECTRIC_BLUE;
         this.maxEnergy = 100;
         this.energy = this.maxEnergy;
@@ -26,8 +26,8 @@ export class Bot {
             return;
         }
 
-        this.position.x += this.speed.x * deltaTime;
-        this.position.y += this.speed.y * deltaTime;
+        this.position.x += this.velocity.x * deltaTime;
+        this.position.y += this.velocity.y * deltaTime;
     }
 
     teleportToRandomPosition(width, height) {

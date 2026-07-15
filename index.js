@@ -20,7 +20,32 @@ energy.teleport(canvas.width / 4 * 3, canvas.height / 2);
 
 const bar = new Bar(0, 0);
 
+const keysPressed = {
+    KeyW: false,
+    KeyA: false,
+    KeyS: false,
+    KeyD: false,
+};
+
+window.addEventListener('keydown', event => {
+    if (event.code in keysPressed) {
+        keysPressed[event.code] = true;
+    }
+});
+
+window.addEventListener('keyup', event => {
+    if (event.code in keysPressed) {
+        keysPressed[event.code] = false;
+    }
+});
+
 function update() {
+    if (keysPressed.KeyD) {
+        bot.velocity.x = 250;
+    } else {
+        bot.velocity.x = 0;
+    }
+
     bot.update(TIME_PER_FRAME_S);
     energy.update(TIME_PER_FRAME_S);
 
