@@ -2,7 +2,7 @@ import { CoolColors } from "./colors.js";
 
 export class Bot {
     constructor(x, y) {
-        this.position = { x:x, y:y };
+        this.position = { x, y };
         this.radius = 20;
     }
 
