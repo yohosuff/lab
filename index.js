@@ -6,7 +6,6 @@ import { Vector2 } from './vector2.js';
 
 const audioCtx = new window.AudioContext();
 
-// TODO: understand how to create sound effects with this
 function playSoundEffect() {
     const now = audioCtx.currentTime;
     const oscillator = audioCtx.createOscillator();
