@@ -8,12 +8,18 @@ const audioCtx = new window.AudioContext();
 
 // TODO: understand how to create sound effects with this
 function playSoundEffect() {
+    const now = audioCtx.currentTime;
     const oscillator = audioCtx.createOscillator();
-    oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(400, audioCtx.currentTime + 0);
-    oscillator.connect(audioCtx.destination);
-    oscillator.start();
-    oscillator.stop(audioCtx.currentTime + 0.05);
+    const gain = audioCtx.createGain();
+    oscillator.type = "triangle";
+    oscillator.frequency.setValueAtTime(523.25, now);
+    oscillator.frequency.setValueAtTime(783.99, now + 0.08);
+    gain.gain.setValueAtTime(0.3, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25)
+    oscillator.connect(gain);
+    gain.connect(audioCtx.destination);
+    oscillator.start(now);
+    oscillator.stop(now + 0.25);
 }
 
 const canvas = document.querySelector('canvas');
