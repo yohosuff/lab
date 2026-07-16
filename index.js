@@ -11,7 +11,7 @@ function playSoundEffect() {
     const now = audioCtx.currentTime;
     const oscillator = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
-    oscillator.type = "triangle";
+    oscillator.type = "square";
     oscillator.frequency.setValueAtTime(523.25, now);
     oscillator.frequency.setValueAtTime(783.99, now + 0.08);
     gain.gain.setValueAtTime(0.3, now);
